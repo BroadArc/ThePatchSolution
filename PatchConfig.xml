@@ -1,0 +1,51 @@
+﻿<Config>
+  <NonProduction>
+    <!-- Any networks that are matched (RegEx allowed) will be deemed as Operating System Deployment networks (OSD). Computers on these networks are considered not to be in production yet and will patch regardless of change stop dates -->
+    <Network1>^10.8.12\..*</Network1>
+    <Network1>^192.168.254\..*</Network1>
+    <!-- Any domains that are not in production. Computers in these domains will patch during their service windows regardless of the change stop dates -->
+    <Domain>test.com</Domain>
+    <Domain>test1.com</Domain>
+    <Domain>test2.com</Domain>
+    <!-- Any Computers (RegEx allowed) that are not in production will patch during their service windows regardless of the change stop dates -->
+    <ComputerNamePattern>TestComputer.*</ComputerNamePattern>
+    <ComputerNamePattern>TestServer.*</ComputerNamePattern>
+    <ForcePatchInstallComputerAge>3</ForcePatchInstallComputerAge>
+  </NonProduction>
+  <PatchGroupDefault>127,00,00,1440</PatchGroupDefault>
+  <ValidPatchGroups>
+    <PatchGroup>127,00,00,1440</PatchGroup>
+    <PatchGroup>64,00,30,300</PatchGroup>
+    <PatchGroup>1,00,30,300</PatchGroup>
+    <PatchGroup>2,00,30,300</PatchGroup>
+    <PatchGroup>4,00,30,300</PatchGroup>
+    <PatchGroup>8,00,30,300</PatchGroup>
+    <PatchGroup>16,00,30,300</PatchGroup>
+    <PatchGroup>32,00,30,300</PatchGroup>
+    <PatchGroup>64,00,30,300</PatchGroup>
+    <PatchGroup>127,00,30,300</PatchGroup>
+    <PatchGroup>128,00,00,00</PatchGroup>
+    <PatchGroup>96,00,30,300</PatchGroup>
+    <PatchGroup>96,18,00,720</PatchGroup>
+    <PatchGroup>31,21,00,600</PatchGroup>
+    <PatchGroup>127,21,00,600</PatchGroup>
+  </ValidPatchGroups>
+  <ChangeStop>
+    <PatchTuesdayInEffect>1</PatchTuesdayInEffect>
+    <PatchTuesdayChangeStopLength>10</PatchTuesdayChangeStopLength>
+<!--
+    <Date>4-8</Date>
+    <Date>29-3</Date>
+    <Date>12/28-01/10</Date>
+    <Date>12/15-12/26</Date>
+-->
+  </ChangeStop>
+  <!-- Where is the PatchGroup Information Stored, AD or REGISTRY -->
+  <PatchGroupLocation>AD</PatchGroupLocation>
+  <PatchGroupADAttribute>ExtensionAttribute1</PatchGroupADAttribute>
+  <!-- HKLM:\Software\MyCompany\PatchInfo -->
+  <PatchGroupRegistrySoftwareKey>MyCompany</PatchGroupRegistrySoftwareKey>
+  <SMTPServer>mail</SMTPServer>
+  <EmailSendReportFrom>no-reply@ProdDomain.com</EmailSendReportFrom>
+  <EmailSendReportTo>arafuse@_broadarc.com</EmailSendReportTo>
+</Config>
